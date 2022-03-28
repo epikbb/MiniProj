@@ -11,10 +11,13 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace ModelControl
+namespace TreeControl
 {
-    public partial class TreeControl: UserControl
+    public delegate void MyTreeNodeClickEventHandler(string str);
+    public partial class TreeControl : UserControl
     {
+        public event MyTreeNodeClickEventHandler TreeNodeMouseClick;
+
         public TreeControl()
         {
             InitializeComponent();
@@ -28,8 +31,6 @@ namespace ModelControl
             List<TreeDto> OperList = new List<TreeDto>();
             List<TreeDto> EqpList = new List<TreeDto>();
 
-            TreeNodeCollection AreaNodes = treeView1.Nodes[0].Nodes;
-
             foreach (TreeDto tree in TreeList)
             {
                 if (tree.objType.Equals("ROOT"))
@@ -38,27 +39,27 @@ namespace ModelControl
                 }
                 else if (tree.objType.Equals("AREA"))
                 {
-                    AreaNodes.Add(tree.objName).Name = tree.objId.ToString();
+                    treeView1.Nodes[0].Nodes.Add(tree.objName).Name = tree.objId.ToString();
                 }
                 else if (tree.objType.Equals("OPER"))
                 {
-                    for (int i = 0; i < AreaNodes.Count; i++)
+                    for (int i = 0; i < treeView1.Nodes[0].Nodes.Count; i++)
                     {
-                        if (AreaNodes[i].Name.Equals(tree.parentObjid.ToString()))
+                        if (treeView1.Nodes[0].Nodes[i].Name.Equals(tree.parentObjid.ToString()))
                         {
-                            AreaNodes[i].Nodes.Add(tree.objName).Name = tree.objId.ToString();
+                            treeView1.Nodes[0].Nodes[i].Nodes.Add(tree.objName).Name = tree.objId.ToString();
                         }
                     }
                 }
                 else
                 {
-                    for (int i = 0; i < AreaNodes.Count; i++)
+                    for (int i = 0; i < treeView1.Nodes[0].Nodes.Count; i++)
                     {
-                        for (int j = 0; j < AreaNodes[i].Nodes.Count; j++)
+                        for (int j = 0; j < treeView1.Nodes[0].Nodes[i].Nodes.Count; j++)
                         {
-                            if (AreaNodes[i].Nodes[j].Name.Equals(tree.parentObjid.ToString()))
+                            if (treeView1.Nodes[0].Nodes[i].Nodes[j].Name.Equals(tree.parentObjid.ToString()))
                             {
-                                AreaNodes[i].Nodes[j].Nodes.Add(tree.objName);
+                                treeView1.Nodes[0].Nodes[i].Nodes[j].Nodes.Add(tree.objName).Name = tree.objId.ToString();
                             }
 
                         }
@@ -82,6 +83,10 @@ namespace ModelControl
             return TreeList;
         }
 
+        public void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            this.TreeNodeMouseClick(e.Node.Name);
+        }
     }
 
     public class TreeDto
@@ -91,7 +96,4 @@ namespace ModelControl
         public string objType { get; set; }
         public int? parentObjid { get; set; }
     }
-}
-
-    
 }

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsControlLibraryGrid;
+using ModelControl;
+using TreeControl;
 
 
 namespace WinFormsApp
@@ -18,6 +20,8 @@ namespace WinFormsApp
         private UserControl1 _gridControl;
         private UserControl22 _chartControl;
         private UserControl3 _propControl;
+ //       private TreeControl _treeControl;
+ //       private ModelControl _modelControl;
 
         bool flag = false;
 
@@ -32,7 +36,11 @@ namespace WinFormsApp
             _gridControl.Dock = DockStyle.Fill;
             dockPanel4.ControlContainer.Controls.Add(_gridControl);
             dockPanel3.ControlContainer.Controls.Add(new UserControl3() { Dock = DockStyle.Fill });
-           // this._gridControl.RowClick += new MyClickEventHandler(UcTree1_IClicked);
+            // this._gridControl.RowClick += new MyClickEventHandler(UcTree1_IClicked);
+ //           TreeControl treeControl = new TreeControl();
+ //           ModelControl modelControl = new ModelControl();
+ //           treeControl.TreeNodeMouseClick += new TreeControl.MyTreeNodeClickEventHandler(modelControl1.RenderModel);
+
         }
 
         private void InitText()

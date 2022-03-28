@@ -17,7 +17,6 @@ namespace TreeControl
     public partial class TreeControl : UserControl
     {
         public event MyTreeNodeClickEventHandler TreeNodeMouseClick;
-
         public TreeControl()
         {
             InitializeComponent();

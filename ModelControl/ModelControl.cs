@@ -13,8 +13,10 @@ using Newtonsoft.Json;
 
 namespace ModelControl
 {
+    public delegate void MyModelClickEventHandler(string name, string version);
     public partial class ModelControl: UserControl
     {
+        public MyModelClickEventHandler ModelClickEventHandler;
         public ModelControl()
         {
             InitializeComponent();
@@ -52,6 +54,10 @@ namespace ModelControl
             return ModelList;
         }
 
+        private void modelGridView1_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            this.ModelClickEventHandler((string)modelGridView1.Rows[e.RowIndex].Cells[0].Value, (string)modelGridView1.Rows[e.RowIndex].Cells[1].Value);
+        }
     }
 
     public class ModelDto

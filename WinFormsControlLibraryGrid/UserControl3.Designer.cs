@@ -34,12 +34,14 @@
             // 
             // propertyGridControl1
             // 
+            this.propertyGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.propertyGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGridControl1.Location = new System.Drawing.Point(0, 0);
             this.propertyGridControl1.Name = "propertyGridControl1";
             this.propertyGridControl1.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.True;
             this.propertyGridControl1.Size = new System.Drawing.Size(376, 533);
             this.propertyGridControl1.TabIndex = 0;
+            this.propertyGridControl1.Click += new System.EventHandler(this.propertyGridControl1_Click);
             // 
             // UserControl3
             // 

@@ -20,8 +20,8 @@ namespace WinFormsApp
         private UserControl1 _gridControl;
         private UserControl22 _chartControl;
         private UserControl3 _propControl;
- //       private TreeControl _treeControl;
- //       private ModelControl _modelControl;
+        private TreeControl.TreeControl _treeControl;
+        private ModelControl.ModelControl _modelControl;
 
         bool flag = false;
 
@@ -32,15 +32,30 @@ namespace WinFormsApp
             InitializeComponent();
             InitText();
             _gridControl = new UserControl1();
-            _gridControl = new UserControl1();
+            _chartControl = new UserControl22();
+            _propControl = new UserControl3();
             _gridControl.Dock = DockStyle.Fill;
-            dockPanel4.ControlContainer.Controls.Add(_gridControl);
-            dockPanel3.ControlContainer.Controls.Add(new UserControl3() { Dock = DockStyle.Fill });
-            // this._gridControl.RowClick += new MyClickEventHandler(UcTree1_IClicked);
- //           TreeControl treeControl = new TreeControl();
- //           ModelControl modelControl = new ModelControl();
- //           treeControl.TreeNodeMouseClick += new TreeControl.MyTreeNodeClickEventHandler(modelControl1.RenderModel);
+            _chartControl.Dock = DockStyle.Fill;
+            _propControl.Dock = DockStyle.Fill;
 
+            dockPanel4.ControlContainer.Controls.Add(_gridControl);
+
+            //this._gridControl.RowClick += new MyClickEventHandler(UcTree1_IClicked);
+            _treeControl = new TreeControl.TreeControl();
+            _modelControl = new ModelControl.ModelControl();
+            _treeControl.Dock = DockStyle.Fill;
+            _modelControl.Dock = DockStyle.Fill;
+            _propControl.Dock = DockStyle.Fill;
+
+            dockPanel1.ControlContainer.Controls.Add(_treeControl);
+            dockPanel2.ControlContainer.Controls.Add(_modelControl);
+            dockPanel3.ControlContainer.Controls.Add(_propControl);
+
+
+            _treeControl.TreeNodeMouseClick += new TreeControl.MyTreeNodeClickEventHandler(_modelControl.RenderModel);
+            _modelControl.ModelClickEventHandler += new ModelControl.MyModelClickEventHandler(_propControl.SetModelNameAndVersion);
+            _modelControl.ModelClickEventHandler += new ModelControl.MyModelClickEventHandler(_propControl.RenderAlgo);
+            _modelControl.ModelClickEventHandler += new ModelControl.MyModelClickEventHandler(_propControl.test);
         }
 
         private void InitText()
@@ -55,12 +70,12 @@ namespace WinFormsApp
             if (simpleButton1.Text == "Chart Run")
             {
                 simpleButton1.Text = "Stop";
-                if (!flag) 
+                if (!flag)
                 {
                     flag = true;
                     _chartControl = new UserControl22();
                     _chartControl.Dock = DockStyle.Fill;
-                    _chartControl.ongoing = true; 
+                    _chartControl.ongoing = true;
                     dockPanel5.ControlContainer.Controls.Add(_chartControl);
                 }
                 _chartControl.ongoing = true;

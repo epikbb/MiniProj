@@ -56,6 +56,7 @@
             this.modelGridView1.RowTemplate.Height = 27;
             this.modelGridView1.Size = new System.Drawing.Size(800, 450);
             this.modelGridView1.TabIndex = 0;
+            this.modelGridView1.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.modelGridView1_RowHeaderMouseDoubleClick);
             // 
             // ModelControl
             // 

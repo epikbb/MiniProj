@@ -47,7 +47,7 @@ namespace WinFormsControlLibraryGrid
             return result;
         }
 
-        public static string GetAlgoDictionary(String algoName)
+        public static string GetAlgoDictionary(String modelName, String modelVersion)
         {
             string result = string.Empty;
 
@@ -56,7 +56,7 @@ namespace WinFormsControlLibraryGrid
                 WebClient client = new WebClient();
                 client.Encoding = Encoding.UTF8;
                 //parameter 따옴표 필수
-                result = client.DownloadString("http://localhost:8081/getAlgoDictionary?algoName='" + algoName + "'");
+                result = client.DownloadString("http://localhost:8081/getAlgoDictionary?modelName='" + modelName + "'&&modelVersion='" + modelVersion+ "'");
                 Console.WriteLine(result);
             }
             catch (Exception e)

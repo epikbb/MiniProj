@@ -15,91 +15,80 @@ namespace WinFormsControlLibraryGrid
 {
     public partial class UserControl22 : UserControl
     {
-        int i = 0;
-        double ucl = 0;
-        double lcl = 0;
-        Series[] series;
-        List<RawData> datas;
-        XYDiagram diagram;
         public bool ongoing;
-        //public event Form1.ClickMe CustomControlClickMe;
-
-
+        private int _i = 0;
+        private double _ucl = 0;
+        private double _lcl = 0;
+        private Series[] _series;
+        private List<RawData> _datas;
+        private XYDiagram _diagram;
 
         public UserControl22()
         {
             InitializeComponent();
-            series = new Series[4];
-            series[0] = new Series("Actual Value", ViewType.Line);
-            series[1] = new Series("Predict Value", ViewType.Line);
-            series[2] = new Series("UCL", ViewType.Line);
-            series[3] = new Series("LCL", ViewType.Line);
-            ChartWrite();
+            _series = new Series[4];
+            _series[0] = new Series("Actual Value", ViewType.Line);
+            _series[1] = new Series("Predict Value", ViewType.Line);
+            _series[2] = new Series("UCL", ViewType.Line);
+            _series[3] = new Series("LCL", ViewType.Line);
+            ongoing = true;
         }
-
 
         public string ChartWrite()
         {
-            ongoing = true;
-
             string dataList = HttpRequest.GetRawDataList();
-            datas = JsonConvert.DeserializeObject<List<RawData>>(dataList);
+            _datas = JsonConvert.DeserializeObject<List<RawData>>(dataList);
 
             double sum = 0;
             double sum2 = 0;
 
             List<double> actList = new List<double>();
-            for (int i = 0; i < datas.Count; i++)
+            for (int i = 0; i < _datas.Count; i++)
             {
-                sum += datas[i].actVal;
-                sum2 += datas[i].accuracy;
-                actList.Add(datas[i].actVal);
+                sum += _datas[i].actVal;
+                sum2 += _datas[i].accuracy;
+                actList.Add(_datas[i].actVal);
 
             }
-            double actAvg = sum / datas.Count;
-            double accuracy = sum2 / datas.Count;
-            ucl = actAvg + (getStandardDeviation(actList) * 3);
-            lcl = actAvg - (getStandardDeviation(actList) * 3);
-            Console.WriteLine("ucl" + ucl);
-            Console.WriteLine("lcl" + lcl);
+            double actAvg = sum / _datas.Count;
+            double accuracy = sum2 / _datas.Count;
+            _ucl = actAvg + (getStandardDeviation(actList) * 3);
+            _lcl = actAvg - (getStandardDeviation(actList) * 3);
+            Console.WriteLine("ucl" + _ucl);
+            Console.WriteLine("lcl" + _lcl);
 
+            _series[0].View.Color = Color.Red;
+            _series[1].View.Color = Color.Green;
+            _series[2].View.Color = Color.Navy;
+            _series[3].View.Color = Color.Purple;
 
-            series[0].View.Color = Color.Red;
-            series[1].View.Color = Color.Green;
-            series[2].View.Color = Color.Navy;
-            series[3].View.Color = Color.Navy;
+            _series[0].ArgumentScaleType = ScaleType.DateTime;
+            _series[1].ArgumentScaleType = ScaleType.DateTime;
+            _series[2].ArgumentScaleType = ScaleType.DateTime;
+            _series[3].ArgumentScaleType = ScaleType.DateTime;
 
-            series[0].ArgumentScaleType = ScaleType.DateTime;
-            series[1].ArgumentScaleType = ScaleType.DateTime;
-            series[2].ArgumentScaleType = ScaleType.DateTime;
-            series[3].ArgumentScaleType = ScaleType.DateTime;
-
-            chartControl1.Series.Add(series[0]);
-            chartControl1.Series.Add(series[1]);
-            chartControl1.Series.Add(series[2]);
-            chartControl1.Series.Add(series[3]);
-
+            chartControl1.Series.Add(_series[0]);
+            chartControl1.Series.Add(_series[1]);
+            chartControl1.Series.Add(_series[2]);
+            chartControl1.Series.Add(_series[3]);
 
             (chartControl1.Series[0].View as LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;  // 마크 표시
             (chartControl1.Series[1].View as LineSeriesView).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;  // 마크 표시
 
-
-            ((LineSeriesView)this.chartControl1.Series[0].View).LineMarkerOptions.Size = 4;
-            ((LineSeriesView)this.chartControl1.Series[1].View).LineMarkerOptions.Size = 4;
-            ((LineSeriesView)this.chartControl1.Series[2].View).LineMarkerOptions.Size = 4;
-            ((LineSeriesView)this.chartControl1.Series[3].View).LineMarkerOptions.Size = 4;
-
+            ((LineSeriesView)chartControl1.Series[0].View).LineMarkerOptions.Size = 4;
+            ((LineSeriesView)chartControl1.Series[1].View).LineMarkerOptions.Size = 4;
+            ((LineSeriesView)chartControl1.Series[2].View).LineMarkerOptions.Size = 4;
+            ((LineSeriesView)chartControl1.Series[3].View).LineMarkerOptions.Size = 4;
 
             ((LineSeriesView)chartControl1.Series[0].View).LineStyle.Thickness = 1;
             ((LineSeriesView)chartControl1.Series[1].View).LineStyle.Thickness = 1;
             ((LineSeriesView)chartControl1.Series[2].View).LineStyle.Thickness = 1;
             ((LineSeriesView)chartControl1.Series[3].View).LineStyle.Thickness = 1;
 
+            _diagram = (XYDiagram)chartControl1.Diagram;
+            _diagram.AxisX.DateTimeScaleOptions.MeasureUnit = DateTimeMeasureUnit.Second;
 
-            diagram = (XYDiagram)chartControl1.Diagram;
-            diagram.AxisX.DateTimeScaleOptions.MeasureUnit = DateTimeMeasureUnit.Second;
-
-            diagram.AxisY.NumericScaleOptions.AutoGrid = true;
+            _diagram.AxisY.NumericScaleOptions.AutoGrid = true;            
 
             Legend legend = chartControl1.Legend;
             legend.AlignmentHorizontal = LegendAlignmentHorizontal.Center;
@@ -110,8 +99,8 @@ namespace WinFormsControlLibraryGrid
             legend.Border.Visibility = DevExpress.Utils.DefaultBoolean.False;
             legend.Margins.Top = 30;
 
-            series[0].ShowInLegend = true;
-            series[1].ShowInLegend = true;
+            _series[0].ShowInLegend = true;
+            _series[1].ShowInLegend = true;
 
             // Create chart titles.
             ChartTitle chartTitle1 = new ChartTitle();
@@ -123,7 +112,6 @@ namespace WinFormsControlLibraryGrid
             chartTitle1.Alignment = StringAlignment.Center;
             chartTitle2.Alignment = StringAlignment.Center;
 
-
             chartTitle1.Font = new Font("Tahoma", 10, FontStyle.Regular);
             chartTitle2.Font = new Font("Tahoma", 9, FontStyle.Regular);
             chartTitle1.TextColor = Color.Black;
@@ -131,8 +119,7 @@ namespace WinFormsControlLibraryGrid
 
             chartControl1.Titles.AddRange(new ChartTitle[] { chartTitle1, chartTitle2 });
 
-
-            timer1.Interval = 300;
+            timer1.Interval = 50;     
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Start();
 
@@ -141,39 +128,38 @@ namespace WinFormsControlLibraryGrid
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {
-          
+        {  
             if (ongoing)
             {
-                if (series[0].Points.Count > 30)
+                if (_series[0].Points.Count > 30)
                 {
-                    series[0].Points.RemoveAt(0);
-                    series[1].Points.RemoveAt(0);
-                    series[2].Points.RemoveAt(0);
-                    series[3].Points.RemoveAt(0);
+                    timer1.Interval = 100;
+                    _series[0].Points.RemoveAt(0);
+                    _series[1].Points.RemoveAt(0);
+                    _series[2].Points.RemoveAt(0);
+                    _series[3].Points.RemoveAt(0);
                 }
 
                 try
                 {
-                    series[0].Points.Add(new SeriesPoint(datas[i].mesureDtTm, datas[i].actVal));
-                    series[1].Points.Add(new SeriesPoint(datas[i].mesureDtTm, datas[i].predVal));
-                    series[2].Points.Add(new SeriesPoint(datas[i].mesureDtTm, ucl));
-                    series[3].Points.Add(new SeriesPoint(datas[i].mesureDtTm, lcl));
+                    _series[0].Points.Add(new SeriesPoint(_datas[_i].mesureDtTm, _datas[_i].actVal));
+                    _series[1].Points.Add(new SeriesPoint(_datas[_i].mesureDtTm, _datas[_i].predVal));
+                    _series[2].Points.Add(new SeriesPoint(_datas[_i].mesureDtTm, _ucl));
+                    _series[3].Points.Add(new SeriesPoint(_datas[_i].mesureDtTm, _lcl));
                 }
                 catch (Exception)
                 {
                     timer1.Stop();
-                    MessageBox.Show("fin!");
+                    MessageBox.Show("더이상의 측정 데이터가 없습니다!");
                 }
 
-                diagram.AxisY.WholeRange.SetMinMaxValues(lcl, ucl);
-                diagram.AxisX.Label.TextPattern = "{ A: mm:ss}";
-                diagram.AxisX.WholeRange.SideMarginsValue = 0;
-                diagram.AxisY.GridLines.Visible = false;
+                _diagram.AxisY.WholeRange.SetMinMaxValues(_lcl, _ucl);
+                _diagram.AxisX.Label.TextPattern = "{ A: mm:ss}";
+                _diagram.AxisX.WholeRange.SideMarginsValue = 0;
+                _diagram.AxisY.GridLines.Visible = false;
 
-                i++;
+                _i++;
             }
-
         }
 
         //표준편차
@@ -188,7 +174,6 @@ namespace WinFormsControlLibraryGrid
             double sumOfDerivationAverage = sumOfDerivation / doubleList.Count;
             return Math.Sqrt(sumOfDerivationAverage - (average * average));
         }
-
 
     }
 }

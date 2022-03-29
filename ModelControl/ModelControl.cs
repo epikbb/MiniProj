@@ -13,8 +13,16 @@ using Newtonsoft.Json;
 
 namespace ModelControl
 {
-    public partial class ModelControl: UserControl
+    public delegate void MyModelClickEventHandler(string name, string version);
+    public delegate void MyModelClickEventHandler2();
+    public delegate void MyModelClickEventHandler3();
+
+    public partial class ModelControl : UserControl
     {
+        public event MyModelClickEventHandler ModelClickEventHandler;
+        public event MyModelClickEventHandler2 ModelClickEventHandler2;
+        public event MyModelClickEventHandler3 ModelClickEventHandler3;
+        
         public ModelControl()
         {
             InitializeComponent();
@@ -27,13 +35,13 @@ namespace ModelControl
             Models = GetModelData(NodeName);
             DataTable dt = new DataTable();
             dt.Columns.Add("Model Name", typeof(string));
-            dt.Columns.Add("Model Version", typeof (string));
+            dt.Columns.Add("Model Version", typeof(string));
 
             foreach (ModelDto model in Models)
             {
                 dt.Rows.Add(model.modelName, model.modelVersion);
             }
-            
+
             this.modelGridView1.DataSource = dt;
         }
 
@@ -52,6 +60,12 @@ namespace ModelControl
             return ModelList;
         }
 
+        private void modelGridView1_RowHeaderMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            this.ModelClickEventHandler((string)modelGridView1.Rows[e.RowIndex].Cells[0].Value, (string)modelGridView1.Rows[e.RowIndex].Cells[1].Value);
+            this.ModelClickEventHandler2();
+            this.ModelClickEventHandler3();
+        }
     }
 
     public class ModelDto

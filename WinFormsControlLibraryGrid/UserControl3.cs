@@ -8,25 +8,42 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.Net;
+using System.IO;
 
 namespace WinFormsControlLibraryGrid
 {
     public partial class UserControl3 : UserControl
     {
-        public AlgorithmDictionary AlgorithmDictionary { get; set; }  
-        
+        public string ModelName { get; set; }
+        public string ModelVersion { get; set; }
+        public AlgorithmDictionary AlgorithmDictionary { get; set; }
+
         public UserControl3()
         {
             InitializeComponent();
-            //모델탭에서 알고리즘이름 받아오게 수정해야함 (임시 ALGO_sample1)
-            string dataList = HttpRequest.GetAlgoDictionary("ALGO_sample2");
+
+        }
+        public static void Main()
+        {
+            UserControl3 u3 = new UserControl3();
+            Console.WriteLine(u3);
+            Console.ReadLine();
+        }
+        public void test(string Name, string Version)
+        {
+            MessageBox.Show(Name + Version);
+        }
+        public void RenderAlgo(string Name, string Version)
+        {
+            string dataList = HttpRequest.GetAlgoDictionary(ModelName, ModelVersion);
             Console.WriteLine(dataList);
 
             try
             {
                 AlgorithmDictionary = JsonConvert.DeserializeObject<AlgorithmDictionary>(dataList, new JsonSerializerSettings());
 
-                if(AlgorithmDictionary == null)
+                if (AlgorithmDictionary == null)
                 {
                     AlgorithmDictionary = new AlgorithmDictionary
                     {
@@ -46,13 +63,19 @@ namespace WinFormsControlLibraryGrid
             {
                 MessageBox.Show(e.Message);
             }
-
         }
-        public static void Main()
+
+        public void SetModelNameAndVersion(string Name, string Version)
         {
-            UserControl3 u3 = new UserControl3();
-            Console.WriteLine(u3);
-            Console.ReadLine();
+            this.ModelName = Name;
+            this.ModelVersion = Version;
+        }
+
+       
+        public class AlgoDto
+        {
+            public string modelName { get; set; }
+            public string modelVersion { get; set; }
         }
     }
 }

@@ -45,13 +45,6 @@ namespace WinFormsControlLibraryGrid
                 view.Columns[i].Caption = name[i];
             }
         }
-
-        private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
-        {
-
-            MessageBox.Show("dd");
-        }
-
     }
     
 }

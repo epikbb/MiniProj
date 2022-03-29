@@ -83,7 +83,7 @@
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.OriginalSize = new System.Drawing.Size(239, 200);
             this.dockPanel1.Size = new System.Drawing.Size(239, 853);
-            this.dockPanel1.Text = "dockPanel1";
+            this.dockPanel1.Text = "Search Condition";
             // 
             // dockPanel5_Container
             // 
@@ -113,7 +113,7 @@
             this.dockPanel2.Name = "dockPanel2";
             this.dockPanel2.OriginalSize = new System.Drawing.Size(297, 553);
             this.dockPanel2.Size = new System.Drawing.Size(297, 423);
-            this.dockPanel2.Text = "dockPanel2";
+            this.dockPanel2.Text = "Assigned Model List";
             // 
             // dockPanel3_Container
             // 
@@ -132,7 +132,7 @@
             this.dockPanel3.Name = "dockPanel3";
             this.dockPanel3.OriginalSize = new System.Drawing.Size(297, 300);
             this.dockPanel3.Size = new System.Drawing.Size(297, 430);
-            this.dockPanel3.Text = "dockPanel3";
+            this.dockPanel3.Text = "Algorithm";
             // 
             // dockPanel7_Container
             // 

@@ -133,7 +133,7 @@ namespace WinFormsControlLibraryGrid
             {
                 if (_series[0].Points.Count > 30)
                 {
-                    timer1.Interval = 100;
+                    timer1.Interval = 150;
                     _series[0].Points.RemoveAt(0);
                     _series[1].Points.RemoveAt(0);
                     _series[2].Points.RemoveAt(0);

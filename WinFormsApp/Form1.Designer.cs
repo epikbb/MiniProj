@@ -182,9 +182,9 @@
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(1036, 3);
+            this.simpleButton1.Location = new System.Drawing.Point(981, 3);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(94, 29);
+            this.simpleButton1.Size = new System.Drawing.Size(149, 64);
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Chart Run";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click_1);

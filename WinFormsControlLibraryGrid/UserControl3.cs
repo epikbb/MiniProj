@@ -71,16 +71,11 @@ namespace WinFormsControlLibraryGrid
             this.ModelVersion = Version;
         }
 
-
+       
         public class AlgoDto
         {
             public string modelName { get; set; }
             public string modelVersion { get; set; }
-        }
-
-        private void propertyGridControl1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

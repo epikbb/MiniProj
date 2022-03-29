@@ -111,15 +111,15 @@
             this.dockPanel2.ID = new System.Guid("f22fb35c-aea3-404e-abae-4b00fc14ebd3");
             this.dockPanel2.Location = new System.Drawing.Point(0, 0);
             this.dockPanel2.Name = "dockPanel2";
-            this.dockPanel2.OriginalSize = new System.Drawing.Size(298, 377);
-            this.dockPanel2.Size = new System.Drawing.Size(297, 553);
+            this.dockPanel2.OriginalSize = new System.Drawing.Size(297, 553);
+            this.dockPanel2.Size = new System.Drawing.Size(297, 423);
             this.dockPanel2.Text = "dockPanel2";
             // 
             // dockPanel3_Container
             // 
             this.dockPanel3_Container.Location = new System.Drawing.Point(4, 32);
             this.dockPanel3_Container.Name = "dockPanel3_Container";
-            this.dockPanel3_Container.Size = new System.Drawing.Size(287, 515);
+            this.dockPanel3_Container.Size = new System.Drawing.Size(287, 385);
             this.dockPanel3_Container.TabIndex = 0;
             // 
             // dockPanel3
@@ -128,17 +128,17 @@
             this.dockPanel3.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             this.dockPanel3.FloatVertical = true;
             this.dockPanel3.ID = new System.Guid("19f083c5-1e31-4d23-87ce-d5e60367862a");
-            this.dockPanel3.Location = new System.Drawing.Point(0, 553);
+            this.dockPanel3.Location = new System.Drawing.Point(0, 423);
             this.dockPanel3.Name = "dockPanel3";
-            this.dockPanel3.OriginalSize = new System.Drawing.Size(298, 376);
-            this.dockPanel3.Size = new System.Drawing.Size(297, 300);
+            this.dockPanel3.OriginalSize = new System.Drawing.Size(297, 300);
+            this.dockPanel3.Size = new System.Drawing.Size(297, 430);
             this.dockPanel3.Text = "dockPanel3";
             // 
             // dockPanel7_Container
             // 
             this.dockPanel7_Container.Location = new System.Drawing.Point(4, 32);
             this.dockPanel7_Container.Name = "dockPanel7_Container";
-            this.dockPanel7_Container.Size = new System.Drawing.Size(287, 264);
+            this.dockPanel7_Container.Size = new System.Drawing.Size(287, 394);
             this.dockPanel7_Container.TabIndex = 0;
             // 
             // dockPanel4
@@ -181,9 +181,10 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(1036, 3);
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(981, 3);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(94, 29);
+            this.simpleButton1.Size = new System.Drawing.Size(149, 64);
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Chart Run";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click_1);

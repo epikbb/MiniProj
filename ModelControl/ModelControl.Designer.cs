@@ -48,6 +48,7 @@
             this.modelGridView1.AllowUserToAddRows = false;
             this.modelGridView1.AllowUserToDeleteRows = false;
             this.modelGridView1.AllowUserToOrderColumns = true;
+            this.modelGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.modelGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.modelGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.modelGridView1.Location = new System.Drawing.Point(0, 0);
@@ -56,7 +57,7 @@
             this.modelGridView1.RowTemplate.Height = 27;
             this.modelGridView1.Size = new System.Drawing.Size(800, 450);
             this.modelGridView1.TabIndex = 0;
-            this.modelGridView1.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.modelGridView1_RowHeaderMouseDoubleClick);
+            this.modelGridView1.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.modelGridView1_RowHeaderMouseDoubleClick_1);
             // 
             // ModelControl
             // 

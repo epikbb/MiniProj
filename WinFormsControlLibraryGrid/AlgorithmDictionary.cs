@@ -10,10 +10,6 @@ namespace WinFormsControlLibraryGrid
     [DefaultProperty("algoName")]
     public class AlgorithmDictionary
     {
-        private string _algoName;
-        private string _propName;
-        private float _propValue;
-
         [Category("Predict")]
         public string algoName { get; set; }
         [Category("Predict")]

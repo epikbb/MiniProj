@@ -88,7 +88,10 @@ namespace WinFormsControlLibraryGrid
             _diagram = (XYDiagram)chartControl1.Diagram;
             _diagram.AxisX.DateTimeScaleOptions.MeasureUnit = DateTimeMeasureUnit.Second;
 
-            _diagram.AxisY.NumericScaleOptions.AutoGrid = true;            
+            _diagram.AxisY.NumericScaleOptions.AutoGrid = false;
+ //           _diagram.AxisY.NumericScaleOptions.GridAlignment = NumericGridAlignment.Custom;
+ //           _diagram.AxisY.NumericScaleOptions.CustomGridAlignment = 0.0001;       
+ //           _diagram.AxisY.NumericScaleOptions.GridOffset = 2;
 
             Legend legend = chartControl1.Legend;
             legend.AlignmentHorizontal = LegendAlignmentHorizontal.Center;

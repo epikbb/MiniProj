@@ -133,11 +133,5 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\delegateExample\delegateExample.csproj">
-      <Project>{2c921050-abca-44a4-b5f8-a7ca75c3901d}</Project>
-      <Name>delegateExample</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

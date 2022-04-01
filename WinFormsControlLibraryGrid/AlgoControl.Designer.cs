@@ -41,7 +41,6 @@
             this.propertyGridControl1.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.True;
             this.propertyGridControl1.Size = new System.Drawing.Size(376, 533);
             this.propertyGridControl1.TabIndex = 0;
-            this.propertyGridControl1.Click += new System.EventHandler(this.propertyGridControl1_Click);
             // 
             // UserControl3
             // 

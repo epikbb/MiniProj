@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsControlLibraryGrid;
-using ModelControl;
 using TreeControl;
+using ModelControl;
 
 namespace WinFormsApp
 {
@@ -32,12 +32,11 @@ namespace WinFormsApp
             _gridControl = new UserControl1();
             _chartControl = new UserControl22();
             _propControl = new UserControl3();
+            _treeControl = new TreeControl.TreeControl();
+            _modelControl = new ModelControl.ModelControl();
             _gridControl.Dock = DockStyle.Fill;
             _chartControl.Dock = DockStyle.Fill;
             _propControl.Dock = DockStyle.Fill;
-        
-             _treeControl = new TreeControl.TreeControl();
-            _modelControl = new ModelControl.ModelControl();
             _treeControl.Dock = DockStyle.Fill;
             _modelControl.Dock = DockStyle.Fill;
           
@@ -50,8 +49,6 @@ namespace WinFormsApp
             _modelControl.ModelClickEventHandler += new ModelControl.MyModelClickEventHandler(_propControl.SetModelNameAndVersion);
             _modelControl.ModelClickEventHandler += new ModelControl.MyModelClickEventHandler(_propControl.RenderAlgo);
             
-            _modelControl.ModelClickEventHandler2 += new ModelControl.MyModelClickEventHandler2(_gridControl.Display);
-            _modelControl.ModelClickEventHandler3 += new ModelControl.MyModelClickEventHandler3(this.ShowBtn);
 
             _treeControl.TreeNodeMouseClick += new TreeControl.MyTreeNodeClickEventHandler(_modelControl.RenderModel);
             _modelControl.ModelClickEventHandler += new ModelControl.MyModelClickEventHandler(_propControl.SetModelNameAndVersion);

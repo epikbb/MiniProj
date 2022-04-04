@@ -58,7 +58,12 @@ namespace WinFormsControlLibraryGrid
                 WebClient client = new WebClient();
                 client.Encoding = Encoding.UTF8;
                 //parameter 따옴표 필수
-                result = client.DownloadString("http://localhost:8081/getAlgoDictionary?modelName='" + modelName + "'&&modelVersion='" + modelVersion+ "'");
+                Dictionary<String, Object> algorithms = new Dictionary<String, Object>();
+                algorithms.Add("modelName", modelName);
+                algorithms.Add("modelVersion", modelVersion);
+                string url = makeRequestUrl(algorithms, "getAlgoDictionary");
+                result = client.DownloadString(url);
+  
                 Console.WriteLine(result);
             }
             catch (Exception e)

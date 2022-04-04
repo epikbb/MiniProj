@@ -34,7 +34,7 @@ namespace WinFormsControlLibraryGrid
             ongoing = true;
         }
 
-        public string ChartWrite()
+        public void ChartWrite()
         {
             //string dataList = HttpRequest.GetRawDataList();
             List<RawData> _datas = HttpRequest.LocalGetRequest<RawData>("getRawDataList");
@@ -128,7 +128,7 @@ namespace WinFormsControlLibraryGrid
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Start();
 
-            return dataList;
+            //return dataList;
 
         }
 

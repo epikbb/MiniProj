@@ -42,9 +42,6 @@ namespace WinFormsApp
             _modelControl.ModelClickEventHandler += new ModelControl.MyModelClickEventHandler(_propControl.RenderAlgo);
             
 
-            _treeControl.TreeNodeMouseClick += new TreeControl.MyTreeNodeClickEventHandler(_modelControl.RenderModel);
-            _modelControl.ModelClickEventHandler += new ModelControl.MyModelClickEventHandler(_propControl.SetModelNameAndVersion);
-            _modelControl.ModelClickEventHandler += new ModelControl.MyModelClickEventHandler(_propControl.RenderAlgo);
             _modelControl.ModelClickEventHandler += new ModelControl.MyModelClickEventHandler(_propControl.test);
         }
         public void ShowBtn()

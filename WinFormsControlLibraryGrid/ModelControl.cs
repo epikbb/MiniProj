@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
+using WinFormsControlLibraryGrid;
 using Newtonsoft.Json;
 
 namespace ModelControl
@@ -47,15 +48,10 @@ namespace ModelControl
 
         private List<ModelDto> GetModelData(string NodeName)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest
-        .Create("http://127.0.0.1:8081/getModelData?objId=" + NodeName);
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream stReadData = response.GetResponseStream();
-            StreamReader srReadData = new StreamReader(stReadData, Encoding.UTF8);
-
-            string strResult = srReadData.ReadToEnd();
-            List<ModelDto> ModelList = JsonConvert.DeserializeObject<List<ModelDto>>(strResult);
+            Dictionary<string, object> ModelData = new Dictionary<string, object>();
+            ModelData.Add("objId", NodeName);
+            List<ModelDto> ModelList = HttpRequest.LocalGetRequest<ModelDto>("getModelData", ModelData);
 
             return ModelList;
         }

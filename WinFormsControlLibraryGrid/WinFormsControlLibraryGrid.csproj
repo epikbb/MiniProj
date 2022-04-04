@@ -68,26 +68,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlgorithmDictionary.cs" />
+    <Compile Include="ModelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModelControl.Designer.cs">
+      <DependentUpon>ModelControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="RawData.cs" />
     <Compile Include="HttpRequestcs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControl1.cs">
+    <Compile Include="RawDataControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <Compile Include="RawDataControl.Designer.cs">
+      <DependentUpon>RawDataControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl22.cs">
+    <Compile Include="ChartControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl22.Designer.cs">
-      <DependentUpon>UserControl22.cs</DependentUpon>
+    <Compile Include="ChartControl.Designer.cs">
+      <DependentUpon>ChartControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl3.cs">
+    <Compile Include="AlgoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl3.Designer.cs">
-      <DependentUpon>UserControl3.cs</DependentUpon>
+    <Compile Include="AlgoControl.Designer.cs">
+      <DependentUpon>AlgoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TreeControl.Designer.cs">
+      <DependentUpon>TreeControl.cs</DependentUpon>
     </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
@@ -95,15 +107,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ModelControl.resx">
+      <DependentUpon>ModelControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <EmbeddedResource Include="RawDataControl.resx">
+      <DependentUpon>RawDataControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl22.resx">
-      <DependentUpon>UserControl22.cs</DependentUpon>
+    <EmbeddedResource Include="ChartControl.resx">
+      <DependentUpon>ChartControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl3.resx">
-      <DependentUpon>UserControl3.cs</DependentUpon>
+    <EmbeddedResource Include="AlgoControl.resx">
+      <DependentUpon>AlgoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeControl.resx">
+      <DependentUpon>TreeControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

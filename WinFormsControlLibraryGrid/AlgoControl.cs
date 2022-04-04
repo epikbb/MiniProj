@@ -23,7 +23,7 @@ namespace WinFormsControlLibraryGrid
         {
             InitializeComponent();
 
-        }
+        } 
         public static void Main()
         {
             UserControl3 u3 = new UserControl3();
@@ -36,6 +36,11 @@ namespace WinFormsControlLibraryGrid
         }
         public void RenderAlgo(string Name, string Version)
         {
+
+            Dictionary<String, Object> algorithms = new Dictionary<String, Object>();
+            algorithms.Add("modelName", Name);
+            algorithms.Add("modelVersion", Version);
+            HttpRequest.LocalGetRequest<AlgorithmDictionary>("getAlgoDictionary", algorithms);
             string dataList = HttpRequest.GetAlgoDictionary(ModelName, ModelVersion);
             Console.WriteLine(dataList);
 

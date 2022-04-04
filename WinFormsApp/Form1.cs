@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsControlLibraryGrid;
-using ModelControl;
-using TreeControl;
 
 namespace WinFormsApp
 {
@@ -50,9 +41,8 @@ namespace WinFormsApp
             _modelControl.ModelClickEventHandler += new ModelControl.MyModelClickEventHandler(_propControl.SetModelNameAndVersion);
             _modelControl.ModelClickEventHandler += new ModelControl.MyModelClickEventHandler(_propControl.RenderAlgo);
             
-            _modelControl.ModelClickEventHandler2 += new ModelControl.MyModelClickEventHandler2(_gridControl.Display);
-            _modelControl.ModelClickEventHandler3 += new ModelControl.MyModelClickEventHandler3(this.ShowBtn);
 
+            _modelControl.ModelClickEventHandler += new ModelControl.MyModelClickEventHandler(_propControl.test);
         }
         public void ShowBtn()
         {
@@ -87,8 +77,6 @@ namespace WinFormsApp
                 simpleButton1.Text = "Chart Run";
                 _chartControl.ongoing = false;
             }
-
         }
-
     }
 }

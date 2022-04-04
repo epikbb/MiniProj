@@ -14,6 +14,7 @@ namespace WinFormsControlLibraryGrid
 {
     public partial class UserControl1 : UserControl
     {
+        List<RawData> objList = null;
         GridView view;
 
         public UserControl1()
@@ -21,14 +22,16 @@ namespace WinFormsControlLibraryGrid
             InitializeComponent();
             view = gridControl.FocusedView as GridView;
             view.GroupPanelText = " ";
+
         }
 
         public void Display()
         {
             string dataList = HttpRequest.GetRawDataList();
             dynamic dynamicObject = JsonConvert.DeserializeObject(dataList);
-  
-            gridControl.DataSource = dynamicObject;
+            objList = dynamicObject;
+            //ObjList = JsonConvert.DeserializeObject<List<RawData>>(dataList);
+            gridControl.DataSource = objList;
             gridControl.ForceInitialize();
 
             view.PopulateColumns();
@@ -44,6 +47,11 @@ namespace WinFormsControlLibraryGrid
             {
                 view.Columns[i].Caption = name[i];
             }
+        }
+
+        private void gridControl_Click(object sender, EventArgs e)
+        {
+
         }
     }
     

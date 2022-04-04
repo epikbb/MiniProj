@@ -26,9 +26,6 @@ namespace TreeControl
         private void RenderTree()
         {
             List<TreeDto> TreeList = GetTreeData();
-            List<TreeDto> AreaList = new List<TreeDto>();
-            List<TreeDto> OperList = new List<TreeDto>();
-            List<TreeDto> EqpList = new List<TreeDto>();
 
             foreach (TreeDto tree in TreeList)
             {

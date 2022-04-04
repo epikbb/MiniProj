@@ -34,10 +34,11 @@ namespace WinFormsControlLibraryGrid
             ongoing = true;
         }
 
-        public string ChartWrite()
+        public void ChartWrite()
         {
-            string dataList = HttpRequest.GetRawDataList();
-            _datas = JsonConvert.DeserializeObject<List<RawData>>(dataList);
+            //string dataList = HttpRequest.GetRawDataList();
+            List<RawData> _datas = HttpRequest.LocalGetRequest<RawData>("getRawDataList");
+            //_datas = JsonConvert.DeserializeObject<List<RawData>>(dataList);
 
             double sum = 0;
             double sum2 = 0;
@@ -126,7 +127,7 @@ namespace WinFormsControlLibraryGrid
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Start();
 
-            return dataList;
+          //  return dataList;
 
         }
 

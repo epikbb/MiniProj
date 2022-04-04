@@ -23,7 +23,7 @@ namespace WinFormsControlLibraryGrid
         {
             InitializeComponent();
 
-        }
+        } 
         public static void Main()
         {
             UserControl3 u3 = new UserControl3();

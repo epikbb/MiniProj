@@ -36,8 +36,10 @@ namespace WinFormsControlLibraryGrid
 
         public string ChartWrite()
         {
-            string dataList = HttpRequest.GetRawDataList();
-            _datas = JsonConvert.DeserializeObject<List<RawData>>(dataList);
+            //string dataList = HttpRequest.GetRawDataList();
+            List<RawData> _datas = HttpRequest.LocalGetRequest<RawData>("getRawDataList");
+            //_datas = JsonConvert.DeserializeObject<List<RawData>>(dataList);
+
 
             double sum = 0;
             double sum2 = 0;

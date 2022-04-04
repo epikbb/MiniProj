@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsControlLibraryGrid;
-using ModelControl;
-using TreeControl;
 
 namespace WinFormsApp
 {
@@ -32,12 +23,12 @@ namespace WinFormsApp
             _gridControl = new UserControl1();
             _chartControl = new UserControl22();
             _propControl = new UserControl3();
+            _treeControl = new TreeControl.TreeControl();
+            _modelControl = new ModelControl.ModelControl();
+
             _gridControl.Dock = DockStyle.Fill;
             _chartControl.Dock = DockStyle.Fill;
             _propControl.Dock = DockStyle.Fill;
-        
-             _treeControl = new TreeControl.TreeControl();
-            _modelControl = new ModelControl.ModelControl();
             _treeControl.Dock = DockStyle.Fill;
             _modelControl.Dock = DockStyle.Fill;
           
@@ -87,8 +78,6 @@ namespace WinFormsApp
                 simpleButton1.Text = "Chart Run";
                 _chartControl.ongoing = false;
             }
-
         }
-
     }
 }
